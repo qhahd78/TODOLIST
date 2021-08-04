@@ -60,6 +60,8 @@ const toDo = () => {
     const localObj = JSON.parse(localStorage.getItem(text));
     // todo div 만들기
     makeTodo(localObj);
+    // 스크롤 맨 아래로 고정
+    mainDiv.scrollTop = mainDiv.scrollHeight;
     // input 값 초기화 
     inputValue.value = '';
 }
