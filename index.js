@@ -43,6 +43,11 @@ const makeTodo = (localObj) => {
     // class 추가
     todoText.setAttribute("class", "todo-text");
     newTodo.setAttribute("class","todo-box");
+    // 효과 클래스 추가 
+    newTodo.classList.add("transition-start");
+    setTimeout(() => {
+        newTodo.classList.add("transition");
+    }, 30);
     newTodoText2.setAttribute("onclick","del()");
     // mainDiv 안에 넣기 
     mainDiv.appendChild(newTodo);
@@ -84,11 +89,9 @@ const del = () => {
 
 // 화면에 출력 
 const list = () => {
-    // 전체 값 가져오기 
     for(let i=0; i<localStorage.length; i++) {
         const localObj = JSON.parse(localStorage.getItem(localStorage.key(i)))
         makeTodo(localObj)
     }
 }
-
 list();

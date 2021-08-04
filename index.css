@@ -10,10 +10,6 @@ html {
     overflow: hidden;
 }
 
-/* --- body height 설정 --- 
-body {
-} */
-
 #header-div {
     top:0;
     font-weight: 300;
@@ -47,7 +43,6 @@ body {
 }
 
 #footer-div {
-    /* background-color: rgb(214, 214, 214); */
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -62,12 +57,11 @@ body {
     height: 50px;
     border: none;
     padding: 10px;
-    border-bottom: 1px solid rgba(104, 207, 211, 0.8);
+    background-color: rgba(240, 248, 255, 0);
+    border-bottom: 1.5px solid rgba(104, 207, 211, 0.8);
     margin-bottom: 30px;
 }
 #input-box:focus {
-    /* transition: .3s; */
-    /* height: 50px; */
     outline: none;
 }
 
@@ -89,17 +83,34 @@ body {
 }
 
 .todo-box p:nth-child(2) {
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: 2.5rem;
+    font-weight: 800;
     color: rgba(206, 206, 206, 0.3);
 }
 
 .todo-box p:nth-child(2):hover {
-    color: rgb(248, 114, 114);
-    transition: .3s;
+    font-size: 2.5rem;
+    color: rgb(255, 75, 75);
+    transition: .8s;
     cursor: pointer;
 }
 
 .todo-text{
     padding-right: 10px;
+}
+
+#none-div{
+    display: none;
+}
+
+/* 효과 */
+.transition-start {
+    padding-top: 1rem;
+    opacity: 0;
+}
+
+.transition {
+    padding-top: 0;
+    opacity: .8;
+    transition: all 1s;
 }
