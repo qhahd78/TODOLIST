@@ -57,13 +57,25 @@ const makeTodo = (localObj) => {
 
 // // toDo 리스트를 추가하는 함수 
 const toDo = () => {
-    // keyValue+=1;
     const nowTime = makeTime()
     // input 에 들어온 text 설정
     let text = inputValue.value;
+    // 정렬 
+    if (localStorage.length > 0){
+        keyValue = localStorage.length+1
+        let maxNum = 0;
+        // max 구할 수 없는 경우
+        if (keyList.length === 1) {
+            maxNum = keyList.length;
+        } else {
+            maxNum = (Math.max.apply(null, keyList))+1;
+        }
+    } else {
+        keyValue += 1
+    }
     // localStorage 객체 형태로 저장
-    // const obj = {'keyValue':keyValue,'text':text, 'time':nowTime};
-    const obj = {'text':text, 'time':nowTime};
+    const obj = {'keyValue':keyValue,'text':text, 'time':nowTime};
+    // const obj = {'text':text, 'time':nowTime};
     localStorage.setItem(text, JSON.stringify(obj));
     // localStorage 객체 불러오기 
     const localObj = JSON.parse(localStorage.getItem(text));
@@ -91,41 +103,43 @@ const del = () => {
     localStorage.removeItem(key);
 }
 
-// const sortedList = [];
-// const sortList = [];
-// const keyList = [];
+const sortedList = [];
+const sortList = [];
+const keyList = [];
 
 // 화면에 출력 
 const list = () => {
-    for(let i=0; i<localStorage.length; i++) {
-        const localObj = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        makeTodo(localObj);
-    }
-    // localStorage 값으로 list 를 만드는 과정 
     // for(let i=0; i<localStorage.length; i++) {
-    //     const localObj = JSON.parse(localStorage.getItem(localStorage.key(i)))
-    //     sortList.push(localObj);
+    //     const localObj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    //     makeTodo(localObj);
     // }
-    // // sortList 정렬 후 출력 
-    // for (let item=0; item<sortList.length; item++){
-    //     keyList.push(sortList[item].keyValue);
-    // }
-    // // 정렬 
-    // keyList.sort();
-    // // 정렬된 key 로 맞는 value 찾고, 새로운 리스트 sortedList 에 순서대로 저장.
-    // for (let i=0; i<keyList.length; i++) {
-    //     for (let j=0; j<sortList.length; j++) {
-    //         if (sortList[j].keyValue === keyList[i]) {
-    //             sortedList.push(sortList[j]);
-    //         } else {
-    //             continue
-    //         }
-    //     }
-    // }
-    // // 정렬된 리스트로 List 출력 
-    // for (let i=0; i<sortedList.length; i++) {
-    //     makeTodo(sortedList[i]);
-    // }
+    // localStorage 값으로 list 를 만드는 과정 
+    for(let i=0; i<localStorage.length; i++) {
+        const localObj = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        sortList.push(localObj);
+    }
+    // sortList 정렬 후 출력 
+    for (let item=0; item<sortList.length; item++){
+        keyList.push(sortList[item].keyValue);
+    }
+    // 정렬 
+    keyList.sort();
+    // 정렬된 key 로 맞는 value 찾고, 새로운 리스트 sortedList 에 순서대로 저장.
+    for (let i=0; i<keyList.length; i++) {
+        for (let j=0; j<sortList.length; j++) {
+            if (sortList[j].keyValue === keyList[i]) {
+                sortedList.push(sortList[j]);
+            } else {
+                continue
+            }
+        }
+    }
+    // 중복제거
+    const norepeatList = Array.from(new Set(sortedList));
+    // 정렬된 리스트로 List 출력 
+    for (let i=0; i<norepeatList.length; i++) {
+        makeTodo(norepeatList[i]);
+    }
 }
 
 list();
