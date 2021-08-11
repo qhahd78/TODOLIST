@@ -127,10 +127,6 @@ const keyList = [];
 
 // 화면에 출력 
 const list = () => {
-    // for(let i=0; i<localStorage.length; i++) {
-    //     const localObj = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    //     makeTodo(localObj);
-    // }
     // localStorage 값으로 list 를 만드는 과정 
     for(let i=0; i<localStorage.length; i++) {
         const localObj = JSON.parse(localStorage.getItem(localStorage.key(i)))
