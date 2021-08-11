@@ -58,7 +58,7 @@ const makeTodo = (localObj) => {
 // // toDo 리스트를 추가하는 함수 
 const toDo = () => {
     const normalList = [];
-    const sortedKey = []
+    const sortedKey = [];
 
     const nowTime = makeTime()
     for(let i=0; i<localStorage.length; i++) {
@@ -80,16 +80,12 @@ const toDo = () => {
         if (localStorage.length === 1) {
             maxNum = sortedKey.length +1;
             keyValue = maxNum
-            console.log(`길이가1일때 ${maxNum}`);
         } else {
             maxNum = (Math.max.apply(null, sortedKey))+1;
-            console.log(sortedKey);
-            console.log(`길이가 적당할 때 ${maxNum}`);
             keyValue = maxNum;
         }
     } else {
         keyValue += 1
-        console.log(`빈값일때${keyValue}`);
     }
     // localStorage 객체 형태로 저장
     const obj = {'keyValue':keyValue,'text':text, 'time':nowTime};
