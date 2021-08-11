@@ -78,7 +78,7 @@ const toDo = () => {
     if (localStorage.length > 0){
         // max 구할 수 없는 경우
         if (localStorage.length === 1) {
-            maxNum = sortedKey.length +1;
+            maxNum = sortedKey[0] + 1;
             keyValue = maxNum
         } else {
             maxNum = (Math.max.apply(null, sortedKey))+1;
