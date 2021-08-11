@@ -1,5 +1,6 @@
 ## TODOLIST [Vanilla Javascript]
 
-- 2021-08-04 ~ 2021-08-08
+- 2021-08-04 ~ 2021-08-12
 
-![todolist](https://user-images.githubusercontent.com/64029753/128845769-9a2cf507-aa1a-47f2-a696-234dfec9ab7f.gif)
+![todolist_Last](https://user-images.githubusercontent.com/64029753/129065117-2595fce7-86cc-40e3-89ed-1a91e24d3f0b.gif)
+
