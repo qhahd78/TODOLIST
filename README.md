@@ -1,4 +1,4 @@
-# TODOLIST [Vanilla Javascript]
+## TODOLIST [Vanilla Javascript]
 
 - 2021-08-04 ~ 2021-08-08
 
